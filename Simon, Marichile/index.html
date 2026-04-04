@@ -76,6 +76,29 @@
         linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0) 45%),
         linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.04));
       pointer-events: none;
+      z-index: 1;
+    }
+
+    .logo-wrap {
+      position: absolute;
+      top: 12px;
+      left: 14px;
+      z-index: 3;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 12px;
+      padding: 6px 10px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+      max-width: 120px;
+    }
+
+    .logo {
+      height: 38px;
+      width: auto;
+      max-width: 100%;
+      display: block;
+      object-fit: contain;
     }
 
     .profile-wrap {
@@ -88,21 +111,26 @@
       height: 122px;
       margin-top: -62px;
       border-radius: 50%;
-      background: #fff;
-      border: 5px solid #fff;
+      background: #ffffff;
+      border: 5px solid #ffffff;
       box-shadow: 0 10px 30px rgba(15, 23, 42, 0.14);
       overflow: hidden;
       position: relative;
       z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .photo {
       width: 100%;
       height: 100%;
       display: block;
-      object-fit: cover;
-      object-position: center top;
-      background: var(--image-fallback);
+      object-fit: contain;
+      object-position: center;
+      background: #ffffff;
+      padding: 1px;
+      border-radius: 50%;
     }
 
     .identity {
@@ -274,6 +302,17 @@
         height: 140px;
       }
 
+      .logo-wrap {
+        top: 10px;
+        left: 10px;
+        padding: 5px 8px;
+        max-width: 100px;
+      }
+
+      .logo {
+        height: 30px;
+      }
+
       .profile-wrap {
         padding: 0 16px 16px;
       }
@@ -282,6 +321,10 @@
         width: 102px;
         height: 102px;
         margin-top: -52px;
+      }
+
+      .photo {
+        padding: 5px;
       }
 
       .content {
@@ -314,6 +357,11 @@
     <section class="hero">
       <div class="banner">
         <img id="bannerImg" class="banner-img" alt="Institution banner" src="Facade.JPG" />
+
+        <div class="logo-wrap">
+          <img id="logoImg" class="logo" alt="Institution logo" src="logo.png" />
+        </div>
+
         <div class="banner-overlay"></div>
       </div>
 
@@ -395,6 +443,7 @@
       organization: 'Southern Isabela College of Arts and Trades',
       photo: 'MARICHILE I. SIMON-NEW 2025.png',
       banner: 'Facade.JPG',
+      logo: 'logo.PNG',
       mobileRaw: '+639482829698',
       mobileDisplay: '+63 948 282 9698',
       workEmail: 'misimon@tesda.gov.ph',
@@ -459,6 +508,7 @@
 
       setImage('photo', data.photo, `${data.name} profile photo`);
       setImage('bannerImg', data.banner, `${data.organization} banner`);
+      setImage('logoImg', data.logo, `${data.organization} logo`);
 
       document.title = `${data.name} | Contact Card`;
     }
